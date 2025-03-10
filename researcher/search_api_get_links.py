@@ -3,7 +3,7 @@ import asyncio
 from googleapiclient.discovery import build
 from dotenv import load_dotenv
 
-number_results = 3
+number_results = 5
 
 # Load environment variables, prioritizing .env.local
 load_dotenv('.env.local')  # Load .env.local first

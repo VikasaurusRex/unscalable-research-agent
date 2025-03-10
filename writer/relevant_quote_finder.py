@@ -14,13 +14,13 @@ def integrate_quotes_into_draft(
     """
     # Format quotes with their sources for the prompt
     quotes_str = "\n".join(
-        f"{q['quote']}\n  Source: {q['source_title']}\n\n"
+        f"\"{q['quote']}\"\n  - Source: {q['source_id']}\n\n"
         for q in quotes_with_sources
     )
     
-    prompt = f"""Write the following section with the given content and quotes. Use [src: Source] to cite a quote when you use it.
+    prompt = f"""Re-write the given Content to integrate the Quotes into a markdown section. Use [src: Source] to cite a quote when you use it.
 Select the most relevant quotes to enhance the text.
-Original Draft:
+Content:
 {draft_text}
 
 Quotes:

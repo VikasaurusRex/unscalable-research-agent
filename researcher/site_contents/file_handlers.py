@@ -2,6 +2,7 @@ import os
 from pydantic import BaseModel
 from typing import Dict, List
 from .quote_processor import Quote
+import hashlib
 
 class RelevanceCheck(BaseModel):
     is_relevant: bool
@@ -14,9 +15,11 @@ async def initialize_learning_file(learnings_path: str, metadata: Dict, relevanc
     try:
         with open(learnings_path, 'w', encoding='utf-8') as f:
             print("Writing metadata section...")
+            source_title = metadata.get('title', 'Unknown')
             f.write("---\n")
-            f.write(f"source_title: {metadata.get('title', 'Unknown')}\n")
+            f.write(f"source_title: {source_title}\n")
             f.write(f"source_url: {metadata.get('source', 'Unknown')}\n")
+            f.write(f"source_id: {hashlib.md5(source_title.encode()).hexdigest()[:15]}\n")
             f.write(f"relevance_score: {relevance.confidence}\n")
             f.write(f"relevance_reason: {relevance.reason}\n")
             f.write("---\n\n")

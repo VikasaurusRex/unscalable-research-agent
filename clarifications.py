@@ -67,7 +67,7 @@ def get_next_question(context: str, model: str = local_model) -> Question:
 
 def gather_clarifications(research_query: str) -> str:
     """Gather clarifications on research scope and research aims through questions."""
-    context = f"INITIAL QUERY: {research_query}\n\nQUESTION HISTORY:\n"
+    context = f"INITIAL QUERY: {research_query}\n\nCURRENT DATE: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\nQUESTION HISTORY:\n"
     question_count = 0
     answer = ""
     

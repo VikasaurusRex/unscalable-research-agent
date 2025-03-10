@@ -36,9 +36,9 @@ def clean_research_folders(base_path: str = "research"):
                 if file.endswith('.txt'):
                     clean_file(os.path.join(root, file))
         
-        # Process unquoted_draft.txt in section folders
-        if "unquoted_draft.txt" in files:
-            clean_file(os.path.join(root, "unquoted_draft.txt"))
+        # Process section_gist.txt in section folders
+        if "section_gist.txt" in files:
+            clean_file(os.path.join(root, "section_gist.txt"))
 
 if __name__ == "__main__":
     print("Starting think tag cleanup...")

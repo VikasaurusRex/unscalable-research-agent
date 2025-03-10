@@ -30,12 +30,11 @@ def generate_serp_queries(section, goal, attempt=0, max_attempts=5) -> SERPQueri
         ])
 
     prompt = (
-        f"Given the report Section and the Research Goal create a JSON object for relevant search engine queries.\n"
-        f"Inform you of the Goal in the context of the Section."
-        f"Make sure each query is unique information and around 3 queries.\n\n"
+        f"Given the report Section you are working on and the Research Goal detail the Google search queries to find the most specific information to inform the goal.\n"
+        f"Make sure each query is specific and relevant to the Section\n" f"limit the queries to around three (3) items.\n\n"
         f"Section: {section}\n"
-        f"Research Goal: {goal}\n"
-        f"Generate EXACTLY one JSON object with a string list of SERP queries in a `queries` field"
+        f"Research Goal: {goal}\n\n"
+        f"IMPERATIVE OBJECTIVE: Generate EXACTLY one JSON object with a string list of queries in a `queries` field"
     )
 
     try:

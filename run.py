@@ -14,7 +14,8 @@ from researcher import (
 from writer import (
     insights_writer, 
     synthesis_writer, 
-    quotes_writer
+    quotes_writer,
+    final_draft_writer
 )    
 
 def load_file_content(report_id: str, filename: str) -> str:
@@ -44,7 +45,7 @@ def main():
     # AGENTIC ASSESSMENT - LOAD
     
     # Load goal and structure from goal.txt files
-    # report_id = "2025_03_03_21_53_15"
+    # report_id = "pltr-research"
     # goal = load_file_content(report_id, "goal.txt")
     # structure_content = load_file_content(report_id, "structure.txt")
     # section_structure = [s.strip() for s in structure_content.split('\n') if s.strip()]
@@ -62,26 +63,30 @@ def main():
 
     # RESEARCH
 
-    # create_folders(report_id, section_structure)
-    # create_serp_queries(report_id, section_structure, goal)
-    # gather_links(report_id, section_structure)
-    # gather_link_content(report_id, section_structure)
-    # interpret_link_content(report_id, section_structure, goal)
+    create_folders(report_id, section_structure)
+    create_serp_queries(report_id, section_structure, goal)
+    gather_links(report_id, section_structure)
+    gather_link_content(report_id, section_structure)
+    interpret_link_content(report_id, section_structure, goal)
 
     # WRITING
     
     # Writing phase - split into separate passes
-    # print("\n=== Generating Individual Insights ===")
-    # insights_writer(report_id, section_structure)
+    print("\n=== Generating Individual Insights ===")
+    insights_writer(report_id, section_structure)
     
-    # print("\n=== Creating Synthesized Drafts ===")
-    # synthesis_writer(report_id, section_structure, goal)
+    print("\n=== Creating Synthesized Drafts ===")
+    synthesis_writer(report_id, section_structure, goal)
     
     print("\n=== Integrating Quotes ===")
     quotes_writer(report_id, section_structure)
     
+    print("\n=== Generating Final Report ===")
+    final_draft_writer(report_id, section_structure)
+    
     print(f"\nResearch completed with ID: {report_id}")
     print(f"Output folder: research/{report_id}")
+    print(f"Final report: research/{report_id}/final_report.md")
 
 if __name__ == "__main__":
     main()
