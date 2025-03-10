@@ -1,0 +1,61 @@
+--- PSEUDOCODE & PROMPTS SUMMARY ---
+
+1. System Prompt Generation:
+   - Ask for a preliminiary objective of the research:
+     • Expect detailed, organized responses.
+     • Encourage speculative insights with proper flagging.
+     • Do not simplify for experienced analysts.
+
+3. Feedback Generation:
+   - Clarify with the user the scope and purpose of the research.
+   - Generate a set of follow-up questions.
+   - Evaluate when there is enough context to begin research.
+
+4. SERP Query Generation:
+   - Construct prompts by combining:
+       • The original query.
+       • Any previous learnings (if available).
+   - Return a list of unique SERP queries paired with research goals.
+
+5. Serp Results Processing:
+   - Retrieve and trim content from SERP search results.
+   - Construct a prompt to extract:
+       • A set number of detailed learnings.
+       • Follow-up questions for deeper research.
+   - Log the number of contents and generated learnings.
+
+6. Deep Research Recursion:
+   - For each SERP query:
+       • Run SERP search with a timeout.
+       • Aggregate new URLs and learnings.
+       • If further depth remains:
+            - Construct a new query using the research goal and follow-ups.
+            - Recursively call deepResearch with reduced depth and updated breadth.
+       • Otherwise, return aggregated learnings and URLs.
+
+7. Final Report Generation:
+   - Merge learnings into a single output.md document.
+   - Generate a final detailed report (aiming for extensive, multi-page output).
+   - Append visited URLs.
+
+8. Main Run Flow:
+   - Read an initial query and research parameters (breadth and depth) from the user.
+   - Generate follow-up questions and collate responses.
+   - Initiate deep research, updating the progress display.
+   - Output gathered learnings and visited URLs on completion.
+   - Write the final report to a file.
+
+--- DATA TRANSFORMATIONS & ACTIONS ---
+• Input: Initial query and research parameters via CLI.
+• Transformation: Each function transforms inputs using AI generated prompts and processing (e.g., trimming text, mapping results).
+• Aggregation: Recursively collect learnings, URLs, and progress updates.
+• Output: Final report merging research findings and a list of visited URLs.
+
+--- PROMPTS ---
+• System prompt: Informs the AI of detailed research requirements.
+• Query prompt: Combines the user query with follow-up dialogues.
+• SERP prompt: Generates unique search queries and associated research goals.
+• Result prompt: Extracts structured learnings and additional follow-up questions.
+• Report prompt: Constructs a comprehensive Markdown report including research findings and sources.
+
+This summary provides a blueprint to rewrite the logic and prompts in another language while preserving the detailed actions and data transformations.
