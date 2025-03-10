@@ -41,6 +41,38 @@ SEARCH_ENGINE_ID=your_search_engine_id_here
 
 > Alternative: Implement TODO_link_scraper and replace it in the imports instead of search_api_get_links. The objective would be to use crawl4ai to scrape links from google search calls from a headless browser. I do not recommend this as it is against Google's terms.
 
+### 3. Ollama Setup
+
+1. Install Ollama from [ollama.ai](https://ollama.ai)
+2. Pull required models:
+```bash
+ollama pull deepseek-r1:32b
+ollama pull deepseek-r1:8b
+```
+**System Requirements:**
+
+DeepSeek-R1:32b:
+- VRAM: 64GB minimum, 80GB+ recommended for optimal performance
+- Storage: ~60GB for model weights
+- CPU Mode: 128GB+ RAM required (significantly slower)
+
+DeepSeek-R1:8b:
+- VRAM: 16GB minimum, 24GB+ recommended
+- Storage: ~16GB for model weights
+- CPU Mode: 32GB+ RAM required (significantly slower)
+
+Note: GPU inference is strongly recommended for practical use.
+
+3. Start Ollama server:
+```bash
+ollama serve
+```
+
+Optional: Verify the server is running by checking:
+```bash
+curl http://localhost:11434/api/version
+```
+
 ## Running the Research Agent
 
 There are two ways to run the research agent:
